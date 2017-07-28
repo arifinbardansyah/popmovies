@@ -1,4 +1,4 @@
-package com.example.android.popmovies;
+package com.example.android.popmovies.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -9,31 +9,31 @@ import java.util.List;
  * Created by arifinbardansyah on 6/29/17.
  */
 
-public class MovieDao implements Parcelable {
+public class MovieResponse implements Parcelable {
     private int page;
     private int total_results;
     private int total_pages;
-    private List<ResultDao> results;
+    private List<Movie> results;
 
-    public MovieDao() {
+    public MovieResponse() {
     }
 
-    protected MovieDao(Parcel in) {
+    protected MovieResponse(Parcel in) {
         page = in.readInt();
         total_results = in.readInt();
         total_pages = in.readInt();
-        results = in.createTypedArrayList(ResultDao.CREATOR);
+        results = in.createTypedArrayList(Movie.CREATOR);
     }
 
-    public static final Creator<MovieDao> CREATOR = new Creator<MovieDao>() {
+    public static final Creator<MovieResponse> CREATOR = new Creator<MovieResponse>() {
         @Override
-        public MovieDao createFromParcel(Parcel in) {
-            return new MovieDao(in);
+        public MovieResponse createFromParcel(Parcel in) {
+            return new MovieResponse(in);
         }
 
         @Override
-        public MovieDao[] newArray(int size) {
-            return new MovieDao[size];
+        public MovieResponse[] newArray(int size) {
+            return new MovieResponse[size];
         }
     };
 
@@ -49,7 +49,7 @@ public class MovieDao implements Parcelable {
         return total_pages;
     }
 
-    public List<ResultDao> getResults() {
+    public List<Movie> getResults() {
         return results;
     }
 

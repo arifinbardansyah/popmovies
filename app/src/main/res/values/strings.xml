@@ -5,4 +5,9 @@
     <string name="release_date">Release Date</string>
     <string name="rating">Rating</string>
     <string name="overview">Overview</string>
+    <string name="trailers">Trailers:</string>
+    <string name="reviews">Reviews:</string>
+    <string name="mark_as_favorite">mark as favorite</string>
+    <string name="unmark">unmark</string>
+    <string name="favorited">Favorited</string>
 </resources>

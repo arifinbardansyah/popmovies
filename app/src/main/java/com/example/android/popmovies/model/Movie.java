@@ -1,4 +1,4 @@
-package com.example.android.popmovies;
+package com.example.android.popmovies.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -9,7 +9,7 @@ import java.util.List;
  * Created by arifinbardansyah on 6/30/17.
  */
 
-public class ResultDao implements Parcelable {
+public class Movie implements Parcelable {
 
     private int vote_count;
     private int id;
@@ -26,7 +26,10 @@ public class ResultDao implements Parcelable {
     private String release_date;
     private List<Integer> genre_ids;
 
-    protected ResultDao(Parcel in) {
+    public Movie() {
+    }
+
+    protected Movie(Parcel in) {
         vote_count = in.readInt();
         id = in.readInt();
         video = in.readByte() != 0;
@@ -42,15 +45,15 @@ public class ResultDao implements Parcelable {
         release_date = in.readString();
     }
 
-    public static final Creator<ResultDao> CREATOR = new Creator<ResultDao>() {
+    public static final Creator<Movie> CREATOR = new Creator<Movie>() {
         @Override
-        public ResultDao createFromParcel(Parcel in) {
-            return new ResultDao(in);
+        public Movie createFromParcel(Parcel in) {
+            return new Movie(in);
         }
 
         @Override
-        public ResultDao[] newArray(int size) {
-            return new ResultDao[size];
+        public Movie[] newArray(int size) {
+            return new Movie[size];
         }
     };
 
@@ -108,6 +111,62 @@ public class ResultDao implements Parcelable {
 
     public List<Integer> getGenre_ids() {
         return genre_ids;
+    }
+
+    public void setVote_count(int vote_count) {
+        this.vote_count = vote_count;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setVideo(boolean video) {
+        this.video = video;
+    }
+
+    public void setVote_average(double vote_average) {
+        this.vote_average = vote_average;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setPopularity(double popularity) {
+        this.popularity = popularity;
+    }
+
+    public void setPoster_path(String poster_path) {
+        this.poster_path = poster_path;
+    }
+
+    public void setOriginal_language(String original_language) {
+        this.original_language = original_language;
+    }
+
+    public void setOriginal_title(String original_title) {
+        this.original_title = original_title;
+    }
+
+    public void setBackdrop_path(String backdrop_path) {
+        this.backdrop_path = backdrop_path;
+    }
+
+    public void setAdult(boolean adult) {
+        this.adult = adult;
+    }
+
+    public void setOverview(String overview) {
+        this.overview = overview;
+    }
+
+    public void setRelease_date(String release_date) {
+        this.release_date = release_date;
+    }
+
+    public void setGenre_ids(List genre_ids) {
+        this.genre_ids = genre_ids;
     }
 
     @Override

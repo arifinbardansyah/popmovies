@@ -1,6 +1,7 @@
-package com.example.android.popmovies;
+package com.example.android.popmovies.ui.main;
 
 import android.content.Context;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,7 +10,9 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 
+import com.example.android.popmovies.R;
 import com.example.android.popmovies.api.ApiClient;
+import com.example.android.popmovies.model.Movie;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -21,11 +24,11 @@ import java.util.List;
 
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesViewHolder> {
 
-    private List<ResultDao> mMovieList;
+    private List<Movie> mMovieList;
     private Context mContext;
     private MovieClickListener mListener;
 
-    public MoviesAdapter(Context context, List<ResultDao> movieList, MovieClickListener listener) {
+    public MoviesAdapter(Context context, List<Movie> movieList, MovieClickListener listener) {
         mContext = context;
         mMovieList = movieList;
         mListener = listener;
@@ -84,7 +87,9 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesView
                         @Override
                         public boolean onPreDraw() {
                             sharedElement.getViewTreeObserver().removeOnPreDrawListener(this);
-                            ((AppCompatActivity)mContext).startPostponedEnterTransition();
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                                ((AppCompatActivity)mContext).startPostponedEnterTransition();
+                            }
                             return true;
                         }
                     });
